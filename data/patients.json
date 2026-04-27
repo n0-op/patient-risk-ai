@@ -1,0 +1,306 @@
+{
+  "patients": [
+    {
+      "id": "PT-001",
+      "name": "Margaret Chen",
+      "age": 67,
+      "gender": "Female",
+      "diagnoses": ["Type 2 diabetes mellitus", "Hypertension", "CKD Stage 2"],
+      "medications": [
+        { "name": "Metformin", "dose": "1000mg twice daily" },
+        { "name": "Lisinopril", "dose": "10mg daily" },
+        { "name": "Atorvastatin", "dose": "40mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-03-15",
+        "reason": "Routine diabetes follow-up",
+        "notes": "A1C improved from 7.4 to 7.1 since last visit. BP well-controlled. Patient adherent to medications. Microalbuminuria noted on urine dipstick. Diet counseling provided."
+      },
+      "lab_values": {
+        "A1C_percent": 7.1,
+        "creatinine_mg_dL": 1.0,
+        "blood_pressure_mmHg": "128/78",
+        "eGFR_mL_min_1_73m2": 72
+      },
+      "risk_flags": ["mild microalbuminuria", "A1C not yet at target"]
+    },
+    {
+      "id": "PT-002",
+      "name": "James Okafor",
+      "age": 54,
+      "gender": "Male",
+      "diagnoses": ["Type 2 diabetes mellitus (uncontrolled)", "Hypertension Stage 2", "Hyperlipidemia"],
+      "medications": [
+        { "name": "Metformin", "dose": "1000mg twice daily" },
+        { "name": "Glipizide", "dose": "10mg daily" },
+        { "name": "Lisinopril", "dose": "20mg daily" },
+        { "name": "Amlodipine", "dose": "5mg daily" },
+        { "name": "Rosuvastatin", "dose": "20mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-01-08",
+        "reason": "Urgent care visit for dizziness and headache",
+        "notes": "BP 162/98 on arrival. Patient reports inconsistent medication adherence for past 3 months. Referred back to PCP for urgent follow-up. No follow-up completed to date."
+      },
+      "lab_values": {
+        "A1C_percent": 10.4,
+        "creatinine_mg_dL": 1.4,
+        "blood_pressure_mmHg": "158/96",
+        "eGFR_mL_min_1_73m2": 58
+      },
+      "risk_flags": ["A1C above 9", "uncontrolled hypertension", "missed follow-up", "medication non-adherence reported"]
+    },
+    {
+      "id": "PT-003",
+      "name": "Dorothy Patel",
+      "age": 71,
+      "gender": "Female",
+      "diagnoses": ["CKD Stage 3b", "Hypertension", "Anemia of chronic kidney disease"],
+      "medications": [
+        { "name": "Losartan", "dose": "50mg daily" },
+        { "name": "Amlodipine", "dose": "10mg daily" },
+        { "name": "Furosemide", "dose": "20mg daily" },
+        { "name": "Ferrous sulfate", "dose": "325mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-02-20",
+        "reason": "Nephrology follow-up",
+        "notes": "eGFR declined from 38 to 34 over 6 months. Proteinuria 2+ on dipstick. Ferrous sulfate initiated for anemia (Hgb 10.2). Discussed renal replacement therapy planning if trajectory continues."
+      },
+      "lab_values": {
+        "A1C_percent": null,
+        "creatinine_mg_dL": 2.1,
+        "blood_pressure_mmHg": "142/88",
+        "eGFR_mL_min_1_73m2": 34
+      },
+      "risk_flags": ["eGFR declining trend", "uncontrolled hypertension", "anemia of CKD", "proteinuria 2+"]
+    },
+    {
+      "id": "PT-004",
+      "name": "Robert Whitfield",
+      "age": 62,
+      "gender": "Male",
+      "diagnoses": ["Heart failure with reduced ejection fraction (EF 35%)", "Hypertension", "Coronary artery disease"],
+      "medications": [
+        { "name": "Carvedilol", "dose": "25mg twice daily" },
+        { "name": "Sacubitril-valsartan", "dose": "97-103mg twice daily" },
+        { "name": "Furosemide", "dose": "40mg daily" },
+        { "name": "Spironolactone", "dose": "25mg daily" },
+        { "name": "Aspirin", "dose": "81mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-03-28",
+        "reason": "Heart failure clinic follow-up",
+        "notes": "2kg weight gain over past week. Mild bilateral lower extremity edema on exam. BNP elevated at 820 pg/mL. Furosemide dose increased transiently. Patient instructed to weigh daily and contact clinic if gain exceeds 2kg in 24 hours."
+      },
+      "lab_values": {
+        "A1C_percent": null,
+        "creatinine_mg_dL": 1.6,
+        "blood_pressure_mmHg": "112/68",
+        "eGFR_mL_min_1_73m2": 52
+      },
+      "risk_flags": ["worsening edema", "elevated BNP (820 pg/mL)", "recent fluid retention", "low ejection fraction"]
+    },
+    {
+      "id": "PT-005",
+      "name": "Linda Torres",
+      "age": 58,
+      "gender": "Female",
+      "diagnoses": ["Type 2 diabetes mellitus", "CKD Stage 3b (diabetic nephropathy)", "Hypertension"],
+      "medications": [
+        { "name": "Insulin glargine", "dose": "40 units nightly" },
+        { "name": "Empagliflozin", "dose": "10mg daily" },
+        { "name": "Lisinopril", "dose": "40mg daily" },
+        { "name": "Atorvastatin", "dose": "40mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-02-05",
+        "reason": "Combined diabetes and nephrology visit",
+        "notes": "A1C 9.2, up from 8.8 prior visit. eGFR 38, down from 42 last quarter. Empagliflozin added for cardiorenal protection. Patient missed 2 scheduled appointments in Q4 2025. Reinforced importance of follow-up."
+      },
+      "lab_values": {
+        "A1C_percent": 9.2,
+        "creatinine_mg_dL": 1.8,
+        "blood_pressure_mmHg": "138/86",
+        "eGFR_mL_min_1_73m2": 38
+      },
+      "risk_flags": ["A1C above 9", "CKD progression", "missed follow-up", "diabetic nephropathy"]
+    },
+    {
+      "id": "PT-006",
+      "name": "Thomas Nguyen",
+      "age": 49,
+      "gender": "Male",
+      "diagnoses": ["Hypertension Stage 1", "Obesity (BMI 31.2)"],
+      "medications": [
+        { "name": "Lisinopril", "dose": "10mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-04-02",
+        "reason": "Annual physical",
+        "notes": "BP reasonably controlled on current regimen. Dietary sodium reduction and weight loss counseled. No end-organ damage detected. Fasting glucose borderline at 108 mg/dL — monitoring for prediabetes."
+      },
+      "lab_values": {
+        "A1C_percent": 5.9,
+        "creatinine_mg_dL": 1.0,
+        "blood_pressure_mmHg": "132/82",
+        "eGFR_mL_min_1_73m2": 88
+      },
+      "risk_flags": ["prediabetes (A1C 5.9)", "obesity", "family history of coronary artery disease"]
+    },
+    {
+      "id": "PT-007",
+      "name": "Eleanor Simmons",
+      "age": 74,
+      "gender": "Female",
+      "diagnoses": ["Heart failure with preserved ejection fraction (EF 55%)", "Type 2 diabetes mellitus", "Hypertension", "Atrial fibrillation"],
+      "medications": [
+        { "name": "Metformin", "dose": "500mg twice daily" },
+        { "name": "Furosemide", "dose": "40mg daily" },
+        { "name": "Apixaban", "dose": "5mg twice daily" },
+        { "name": "Metoprolol succinate", "dose": "50mg daily" },
+        { "name": "Amlodipine", "dose": "5mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-03-10",
+        "reason": "Cardiology follow-up",
+        "notes": "Patient reports progressive dyspnea on exertion with minimal activity. AF rate-controlled on metoprolol. BNP 450 pg/mL. A1C 7.8. Diuretic management stable. Fall risk assessment completed — moderate risk."
+      },
+      "lab_values": {
+        "A1C_percent": 7.8,
+        "creatinine_mg_dL": 1.2,
+        "blood_pressure_mmHg": "136/84",
+        "eGFR_mL_min_1_73m2": 56
+      },
+      "risk_flags": ["atrial fibrillation on anticoagulation", "worsening dyspnea on exertion", "elevated fall risk (elderly, diuretic use)", "multiple comorbidities"]
+    },
+    {
+      "id": "PT-008",
+      "name": "Marcus Johnson",
+      "age": 61,
+      "gender": "Male",
+      "diagnoses": ["Type 2 diabetes mellitus (poorly controlled)", "Peripheral diabetic neuropathy", "Hypertension"],
+      "medications": [
+        { "name": "Insulin glargine", "dose": "50 units nightly" },
+        { "name": "Liraglutide", "dose": "1.2mg daily" },
+        { "name": "Amlodipine", "dose": "10mg daily" },
+        { "name": "Gabapentin", "dose": "300mg three times daily" }
+      ],
+      "recent_visit": {
+        "date": "2025-11-14",
+        "reason": "PCP visit for bilateral foot pain and tingling",
+        "notes": "A1C 11.6. Patient reports dietary noncompliance and high-carbohydrate diet. Foot exam reveals markedly decreased bilateral sensation to monofilament. Podiatry referral placed. No follow-up appointment completed since this visit."
+      },
+      "lab_values": {
+        "A1C_percent": 11.6,
+        "creatinine_mg_dL": 1.3,
+        "blood_pressure_mmHg": "148/92",
+        "eGFR_mL_min_1_73m2": 62
+      },
+      "risk_flags": ["A1C above 9", "diabetic peripheral neuropathy", "missed follow-up", "high amputation risk without active foot care"]
+    },
+    {
+      "id": "PT-009",
+      "name": "Patricia Rivera",
+      "age": 69,
+      "gender": "Female",
+      "diagnoses": ["CKD Stage 4", "Hypertension", "Secondary hyperparathyroidism"],
+      "medications": [
+        { "name": "Amlodipine", "dose": "10mg daily" },
+        { "name": "Carvedilol", "dose": "6.25mg twice daily" },
+        { "name": "Calcitriol", "dose": "0.25mcg daily" },
+        { "name": "Sevelamer carbonate", "dose": "800mg three times daily with meals" }
+      ],
+      "recent_visit": {
+        "date": "2026-04-10",
+        "reason": "Nephrology visit — renal replacement therapy planning",
+        "notes": "eGFR 22, down from 27 six months ago. Patient counseled on hemodialysis vs. peritoneal dialysis vs. transplant listing. AV fistula creation referral submitted. Calcium-phosphorus balance managed with sevelamer. Hemoglobin 9.4."
+      },
+      "lab_values": {
+        "A1C_percent": null,
+        "creatinine_mg_dL": 3.4,
+        "blood_pressure_mmHg": "148/92",
+        "eGFR_mL_min_1_73m2": 22
+      },
+      "risk_flags": ["CKD Stage 4 approaching ESRD", "uncontrolled hypertension", "secondary hyperparathyroidism", "dialysis planning required", "anemia of CKD"]
+    },
+    {
+      "id": "PT-010",
+      "name": "William Park",
+      "age": 55,
+      "gender": "Male",
+      "diagnoses": ["Type 2 diabetes mellitus", "Hypertension", "Non-alcoholic fatty liver disease"],
+      "medications": [
+        { "name": "Metformin", "dose": "500mg twice daily" },
+        { "name": "Sitagliptin", "dose": "100mg daily" },
+        { "name": "Lisinopril", "dose": "20mg daily" },
+        { "name": "Rosuvastatin", "dose": "10mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-01-22",
+        "reason": "PCP visit",
+        "notes": "A1C 9.8. BP 152/94. Patient self-discontinued metformin 2 months ago due to GI side effects without notifying provider. Restarted at lower dose with instructions to titrate. NAFLD stable on last abdominal ultrasound (2025-09)."
+      },
+      "lab_values": {
+        "A1C_percent": 9.8,
+        "creatinine_mg_dL": 1.1,
+        "blood_pressure_mmHg": "152/94",
+        "eGFR_mL_min_1_73m2": 74
+      },
+      "risk_flags": ["A1C above 9", "uncontrolled hypertension", "medication non-adherence", "missed follow-up"]
+    },
+    {
+      "id": "PT-011",
+      "name": "Sandra Mitchell",
+      "age": 78,
+      "gender": "Female",
+      "diagnoses": ["Heart failure with reduced ejection fraction (EF 30%)", "CKD Stage 3a", "Atrial fibrillation", "Hypertension"],
+      "medications": [
+        { "name": "Furosemide", "dose": "80mg daily" },
+        { "name": "Carvedilol", "dose": "12.5mg twice daily" },
+        { "name": "Sacubitril-valsartan", "dose": "49-51mg twice daily" },
+        { "name": "Rivaroxaban", "dose": "15mg daily with dinner" },
+        { "name": "Metolazone", "dose": "2.5mg as needed for volume overload" }
+      ],
+      "recent_visit": {
+        "date": "2026-03-22",
+        "reason": "Post-discharge cardiology follow-up",
+        "notes": "Discharged 3 weeks ago after acute decompensated heart failure admission. Currently euvolemic. Creatinine bumped to 1.9 (from baseline 1.6) during admission and has not fully recovered. BNP 1240. Daily weight log reviewed — stable past week. High-risk for readmission."
+      },
+      "lab_values": {
+        "A1C_percent": null,
+        "creatinine_mg_dL": 1.9,
+        "blood_pressure_mmHg": "108/66",
+        "eGFR_mL_min_1_73m2": 42
+      },
+      "risk_flags": ["recent hospitalization for decompensated heart failure", "worsening renal function post-admission", "very low ejection fraction", "high 30-day readmission risk", "fall risk in elderly on diuretics"]
+    },
+    {
+      "id": "PT-012",
+      "name": "Harold Brennan",
+      "age": 66,
+      "gender": "Male",
+      "diagnoses": ["Type 2 diabetes mellitus", "Hypertension", "Post-myocardial infarction (2022)", "Hyperlipidemia"],
+      "medications": [
+        { "name": "Metformin", "dose": "1000mg twice daily" },
+        { "name": "Empagliflozin", "dose": "10mg daily" },
+        { "name": "Atorvastatin", "dose": "80mg daily" },
+        { "name": "Aspirin", "dose": "81mg daily" },
+        { "name": "Metoprolol succinate", "dose": "100mg daily" },
+        { "name": "Lisinopril", "dose": "40mg daily" }
+      ],
+      "recent_visit": {
+        "date": "2026-04-15",
+        "reason": "Cardiology follow-up",
+        "notes": "A1C 7.4, at goal. BP well-controlled. Echo shows EF 50%, improved from 42% in 2023. Patient fully adherent to medication regimen. Labs stable. LDL 58 mg/dL on high-intensity statin. Continue current management."
+      },
+      "lab_values": {
+        "A1C_percent": 7.4,
+        "creatinine_mg_dL": 1.2,
+        "blood_pressure_mmHg": "122/74",
+        "eGFR_mL_min_1_73m2": 66
+      },
+      "risk_flags": ["post-MI cardiovascular risk", "mild renal impairment requiring monitoring with RAAS therapy"]
+    }
+  ]
+}
