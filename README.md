@@ -29,9 +29,7 @@ The workflow:
 
 ## Demo
 
-> _Screenshot placeholder — run locally to see the UI_
-
-![Patient Risk AI UI](docs/screenshot.png)
+![Patient Risk AI](docs/patient-risk-ai-screenshot.png)
 
 ---
 
