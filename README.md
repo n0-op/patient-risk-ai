@@ -3,7 +3,7 @@
 An AI-powered clinical risk prioritization tool that helps care coordinators identify which patients need attention and why — without manual chart review.
 
 **Live demo:** https://patient-risk-ai.vercel.app  
-**API:** https://patient-risk-ai.railway.app
+**API:** https://web-production-9a2f8.up.railway.app/
 
 ---
 
