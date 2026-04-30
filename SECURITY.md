@@ -23,18 +23,25 @@ UUID v4 IDs are 122 bits of random entropy. The probability of guessing a valid 
 
 **UUID v4 is a defense-in-depth measure, not a substitute for authentication and authorization.** Every endpoint that returns patient data must still verify that the requesting user is permitted to access that specific record.
 
-## Audit Log Recommendations
+## Audit Logging
 
-If audit logging is added (e.g., recording which user accessed which patient record), patient IDs in log files should be hashed rather than logged in plaintext:
+All patient data access events are logged: listing patients, analyzing a record, and refreshing a summary. Every log entry captures the event type, timestamp, and an opaque patient reference.
+
+Raw patient UUIDs are never written to log files. Instead, each UUID is passed through SHA-256 and the first 16 hex characters are used as the patient reference:
 
 ```python
-import hashlib
-
-def audit_id(patient_id: str) -> str:
-    return hashlib.sha256(patient_id.encode()).hexdigest()[:16]
+hashlib.sha256(patient_uuid.encode()).hexdigest()[:16]
 ```
 
-This allows correlation of log entries for a given patient without exposing the raw UUID, limiting the blast radius if log files are exfiltrated.
+The truncated hash is consistent — the same UUID always produces the same reference — so log entries for a given patient can be correlated across events without the log file itself containing any PHI. If the log file is exfiltrated, the hashes cannot be reversed to recover patient identifiers.
+
+Logs are written to `logs/audit.log` in newline-delimited JSON. Each line has the shape:
+
+```json
+{"event": "patient_analyzed", "timestamp": "2026-04-30T19:00:00+00:00", "session_token": null, "patient_ref": "e7e62637edc867d7", "source": "cache"}
+```
+
+The `logs/` directory is excluded from version control via `.gitignore` so audit logs are never committed to the repository.
 
 ## HTTPS Requirement
 

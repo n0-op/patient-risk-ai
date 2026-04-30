@@ -1,9 +1,12 @@
+import hashlib
 import json
+import logging
+import logging.handlers
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -14,6 +17,35 @@ CACHE_PATH = Path("data/summary_cache.json")
 patients_list: list = []
 patients_by_id: dict = {}
 summary_cache: dict = {}
+
+# --- Audit logging setup ---
+
+Path("logs").mkdir(exist_ok=True)
+
+_audit_logger = logging.getLogger("audit")
+_audit_logger.setLevel(logging.INFO)
+_audit_logger.propagate = False
+_handler = logging.FileHandler("logs/audit.log", encoding="utf-8")
+_handler.setFormatter(logging.Formatter("%(message)s"))
+_audit_logger.addHandler(_handler)
+
+
+def hash_patient_id(patient_uuid: str) -> str:
+    # SHA-256 hash of patient UUID — never log raw UUIDs in audit trail per HIPAA audit control guidance
+    return hashlib.sha256(patient_uuid.encode()).hexdigest()[:16]
+
+
+def audit(event: str, request: Request, **extra) -> None:
+    record = {
+        "event": event,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "session_token": request.headers.get("X-Session-Token"),
+        **extra,
+    }
+    _audit_logger.info(json.dumps(record))
+
+
+# --- App setup ---
 
 
 @asynccontextmanager
@@ -57,19 +89,26 @@ def health():
 
 
 @app.get("/patients")
-def get_patients():
+def get_patients(request: Request):
+    audit("patient_list_accessed", request)
     return patients_list
 
 
 # Patient IDs are UUID v4 — unpredictable by design to prevent BOLA (OWASP API Security Top 10 #1).
 # Sequential IDs (PT-001, PT-002, ...) allow enumeration attacks; UUIDs do not.
 @app.post("/patients/{patient_id}/analyze", response_model=AnalysisResult)
-def analyze(patient_id: str):
+def analyze(patient_id: str, request: Request):
     if patient_id not in patients_by_id:
         raise HTTPException(status_code=404, detail=f"Patient {patient_id} not found")
 
     cached = summary_cache.get(patient_id)
     if cached:
+        audit(
+            "patient_analyzed",
+            request,
+            patient_ref=hash_patient_id(patient_id),
+            source="cache",
+        )
         return AnalysisResult(patient_id=patient_id, **cached)
 
     patient = patients_by_id[patient_id]
@@ -80,11 +119,17 @@ def analyze(patient_id: str):
         "source": "live",
     }
     summary_cache[patient_id] = entry
+    audit(
+        "patient_analyzed",
+        request,
+        patient_ref=hash_patient_id(patient_id),
+        source="live",
+    )
     return AnalysisResult(patient_id=patient_id, **entry)
 
 
 @app.post("/patients/{patient_id}/refresh", response_model=AnalysisResult)
-def refresh(patient_id: str):
+def refresh(patient_id: str, request: Request):
     if patient_id not in patients_by_id:
         raise HTTPException(status_code=404, detail=f"Patient {patient_id} not found")
 
@@ -106,4 +151,10 @@ def refresh(patient_id: str):
     with open(CACHE_PATH, "w") as f:
         json.dump(disk_cache, f, indent=2)
 
+    audit(
+        "patient_refreshed",
+        request,
+        patient_ref=hash_patient_id(patient_id),
+        source="live",
+    )
     return AnalysisResult(patient_id=patient_id, **entry)
