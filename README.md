@@ -60,19 +60,20 @@ cp .env.example .env          # add your ANTHROPIC_API_KEY
 **2. Install dependencies**
 
 ```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
+# install uv first (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-pip install -r requirements.txt
+# install dependencies
+uv sync
+
+# install with dev dependencies
+uv sync --extra dev
 ```
 
 **3. Start the backend**
 
 ```bash
-uvicorn backend.main:app --reload
+uv run uvicorn backend.main:app --reload
 ```
 
 **4. Open the frontend**
@@ -82,8 +83,14 @@ Open `frontend/index.html` directly in your browser. The page connects to `http:
 **Verify setup (optional)**
 
 ```bash
-python test_setup.py    # confirms API key and data load
-python risk_engine.py   # runs analysis on all 12 sample patients
+uv run python test_setup.py    # confirms API key and data load
+uv run python risk_engine.py   # runs analysis on all 12 sample patients
+```
+
+**Run tests**
+
+```bash
+uv run pytest
 ```
 
 ---
