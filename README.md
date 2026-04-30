@@ -2,6 +2,9 @@
 
 An AI-powered clinical risk prioritization tool that helps care coordinators identify which patients need attention and why — without manual chart review.
 
+**Live demo:** https://patient-risk-ai.vercel.app  
+**API:** https://patient-risk-ai.railway.app
+
 ---
 
 ## The Problem
@@ -23,7 +26,7 @@ The workflow:
 1. Care coordinator opens the app and sees a panel of patients
 2. Clicking a patient triggers a live analysis via the Claude API
 3. A risk summary appears in seconds — with priority badge and key concerns called out
-4. Summaries are cached client-side so repeated views are instant; a Refresh button forces a new analysis when the clinical picture changes
+4. Summaries for the 12 sample patients are pre-generated and stored server-side — first click loads instantly with zero API calls. A Refresh button forces a fresh analysis and updates the server-side cache
 
 ---
 
@@ -44,6 +47,15 @@ The workflow:
 | Validation | Pydantic v2 |
 
 The system prompt is cached with `cache_control: ephemeral`, so analyzing a full patient panel shares a cached prompt prefix — reducing latency and cost on repeated calls.
+
+---
+
+## Security
+
+- Patient identifiers are opaque UUIDs — no sequential or guessable IDs (OWASP BOLA prevention)
+- Raw UUIDs are never written to logs — audit trail uses truncated SHA-256 hashes
+- All patient data in this demo is fully synthetic
+- See SECURITY.md for full details
 
 ---
 
