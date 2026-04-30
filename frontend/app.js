@@ -1,4 +1,6 @@
-const API = 'http://127.0.0.1:8000';
+const API = ['localhost', '127.0.0.1'].includes(window.location.hostname)
+  ? 'http://127.0.0.1:8000'
+  : 'https://web-production-9a2f8.up.railway.app';
 const cache = {};           // keyed by patient id
 let activeId = null;
 let activePatient = null;   // { id, name, age, gender, dx }

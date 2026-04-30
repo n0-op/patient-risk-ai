@@ -23,7 +23,13 @@ app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost",
+        "http://127.0.0.1:8000",
+        "http://127.0.0.1",
+        "https://*.vercel.app",
+        "https://web-production-9a2f8.up.railway.app",
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
