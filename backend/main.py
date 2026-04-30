@@ -27,6 +27,7 @@ app.add_middleware(
         "http://localhost",
         "http://127.0.0.1:8000",
         "http://127.0.0.1",
+        "https://patient-risk-ai.vercel.app",
         "https://*.vercel.app",
         "https://web-production-9a2f8.up.railway.app",
     ],
