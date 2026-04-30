@@ -61,6 +61,8 @@ def get_patients():
     return patients_list
 
 
+# Patient IDs are UUID v4 — unpredictable by design to prevent BOLA (OWASP API Security Top 10 #1).
+# Sequential IDs (PT-001, PT-002, ...) allow enumeration attacks; UUIDs do not.
 @app.post("/patients/{patient_id}/analyze", response_model=AnalysisResult)
 def analyze(patient_id: str):
     if patient_id not in patients_by_id:

@@ -1,7 +1,7 @@
 {
   "patients": [
     {
-      "id": "PT-001",
+      "id": "32d994c4-a414-439a-a12e-7188a712e139",
       "name": "Margaret Chen",
       "age": 67,
       "gender": "Female",
@@ -25,7 +25,7 @@
       "risk_flags": ["mild microalbuminuria", "A1C not yet at target"]
     },
     {
-      "id": "PT-002",
+      "id": "cbafc952-e9d2-40cd-b0ab-fbc2f5a416b6",
       "name": "James Okafor",
       "age": 54,
       "gender": "Male",
@@ -51,7 +51,7 @@
       "risk_flags": ["A1C above 9", "uncontrolled hypertension", "missed follow-up", "medication non-adherence reported"]
     },
     {
-      "id": "PT-003",
+      "id": "021ded2a-a878-4fa8-bbd0-ca892d76ba37",
       "name": "Dorothy Patel",
       "age": 71,
       "gender": "Female",
@@ -76,7 +76,7 @@
       "risk_flags": ["eGFR declining trend", "uncontrolled hypertension", "anemia of CKD", "proteinuria 2+"]
     },
     {
-      "id": "PT-004",
+      "id": "45fa2433-36da-4b0c-ba9f-6d9e328d9bec",
       "name": "Robert Whitfield",
       "age": 62,
       "gender": "Male",
@@ -102,7 +102,7 @@
       "risk_flags": ["worsening edema", "elevated BNP (820 pg/mL)", "recent fluid retention", "low ejection fraction"]
     },
     {
-      "id": "PT-005",
+      "id": "8d240f1d-d65d-48bd-aa51-2ffb22a4a110",
       "name": "Linda Torres",
       "age": 58,
       "gender": "Female",
@@ -127,7 +127,7 @@
       "risk_flags": ["A1C above 9", "CKD progression", "missed follow-up", "diabetic nephropathy"]
     },
     {
-      "id": "PT-006",
+      "id": "3a69a138-9aee-4821-b0d9-24f889ac6699",
       "name": "Thomas Nguyen",
       "age": 49,
       "gender": "Male",
@@ -149,7 +149,7 @@
       "risk_flags": ["prediabetes (A1C 5.9)", "obesity", "family history of coronary artery disease"]
     },
     {
-      "id": "PT-007",
+      "id": "f4a697f1-3e2c-43f7-a06c-87338d67a4dc",
       "name": "Eleanor Simmons",
       "age": 74,
       "gender": "Female",
@@ -175,7 +175,7 @@
       "risk_flags": ["atrial fibrillation on anticoagulation", "worsening dyspnea on exertion", "elevated fall risk (elderly, diuretic use)", "multiple comorbidities"]
     },
     {
-      "id": "PT-008",
+      "id": "d355ff52-473a-40ed-98a2-d40d095c63bb",
       "name": "Marcus Johnson",
       "age": 61,
       "gender": "Male",
@@ -200,7 +200,7 @@
       "risk_flags": ["A1C above 9", "diabetic peripheral neuropathy", "missed follow-up", "high amputation risk without active foot care"]
     },
     {
-      "id": "PT-009",
+      "id": "34c65037-6a9c-4339-87e5-d0509e6f057a",
       "name": "Patricia Rivera",
       "age": 69,
       "gender": "Female",
@@ -225,7 +225,7 @@
       "risk_flags": ["CKD Stage 4 approaching ESRD", "uncontrolled hypertension", "secondary hyperparathyroidism", "dialysis planning required", "anemia of CKD"]
     },
     {
-      "id": "PT-010",
+      "id": "6938eaff-bdf5-45c7-96f3-d0574f60031b",
       "name": "William Park",
       "age": 55,
       "gender": "Male",
@@ -250,7 +250,7 @@
       "risk_flags": ["A1C above 9", "uncontrolled hypertension", "medication non-adherence", "missed follow-up"]
     },
     {
-      "id": "PT-011",
+      "id": "0f9f6e2c-004d-46a2-a484-2b8963524603",
       "name": "Sandra Mitchell",
       "age": 78,
       "gender": "Female",
@@ -276,7 +276,7 @@
       "risk_flags": ["recent hospitalization for decompensated heart failure", "worsening renal function post-admission", "very low ejection fraction", "high 30-day readmission risk", "fall risk in elderly on diuretics"]
     },
     {
-      "id": "PT-012",
+      "id": "1241a460-384a-478f-a5b8-11bb703e7eef",
       "name": "Harold Brennan",
       "age": 66,
       "gender": "Male",
