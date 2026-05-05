@@ -88,9 +88,24 @@ uv sync --extra dev
 uv run uvicorn backend.main:app --reload
 ```
 
-**4. Open the frontend**
+> Keep this terminal running. Open a second terminal to serve the frontend.
 
-Open `frontend/index.html` directly in your browser. The page connects to `http://127.0.0.1:8000` by default.
+**4. Serve the frontend locally**
+
+Do not open `frontend/index.html` directly in your browser — this causes CORS errors because the origin resolves to `null`.
+
+Instead, serve it through a local HTTP server:
+
+```bash
+cd frontend
+python -m http.server 5500
+```
+
+Then open `http://localhost:5500` in your browser.
+
+The frontend automatically detects whether it is running locally or on Vercel and points to the correct backend:
+- **Local:** `http://127.0.0.1:8000`
+- **Production:** `https://web-production-9a2f8.up.railway.app`
 
 **Verify setup (optional)**
 
