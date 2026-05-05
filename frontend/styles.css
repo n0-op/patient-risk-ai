@@ -299,3 +299,189 @@ body {
 
 .refresh-btn:hover { background: #eff6ff; border-color: #93c5fd; }
 .refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── Build a Patient button ──────────────────────── */
+.build-btn {
+  width: calc(100% - 40px);
+  margin: 10px 20px 2px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #93c5fd;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s, border-color 0.12s;
+  flex-shrink: 0;
+}
+.build-btn:hover { background: #1e3a5f; border-color: #3b82f6; }
+
+/* ── Form panel ──────────────────────────────────── */
+.form-panel { max-width: 680px; display: flex; flex-direction: column; gap: 20px; }
+
+.form-section { display: flex; flex-direction: column; gap: 8px; }
+
+.form-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.form-sublabel {
+  font-size: 11.5px;
+  color: #64748b;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+}
+
+.form-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.form-group { display: flex; flex-direction: column; }
+
+.form-input {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: #0f172a;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.12s;
+  font-family: inherit;
+}
+.form-input:focus { border-color: #93c5fd; }
+.form-input::placeholder { color: #94a3b8; }
+
+.form-select {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: #0f172a;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.12s;
+  font-family: inherit;
+}
+.form-select:focus { border-color: #93c5fd; }
+
+/* ── Autocomplete row ────────────────────────────── */
+.ac-row { display: flex; align-items: center; gap: 8px; }
+
+.ac-wrap { position: relative; flex: 1; }
+
+.ac-drop {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 100;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.ac-item {
+  padding: 8px 12px;
+  font-size: 12.5px;
+  color: #334155;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.ac-item:hover { background: #f1f5f9; }
+
+.add-btn {
+  padding: 7px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: white;
+  background: #3b82f6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.12s;
+}
+.add-btn:hover { background: #2563eb; }
+
+.dose-input { width: 120px !important; flex: none; }
+
+/* ── Tags ────────────────────────────────────────── */
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px 3px 10px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tag-remove {
+  background: none;
+  border: none;
+  color: #93c5fd;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 2px;
+  flex-shrink: 0;
+  transition: color 0.1s;
+}
+.tag-remove:hover { color: #b91c1c; }
+
+/* ── Form actions ────────────────────────────────── */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.form-error { font-size: 12.5px; color: #b91c1c; flex: 1; }
+
+.analyze-btn {
+  padding: 9px 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: white;
+  background: #0f172a;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+.analyze-btn:hover  { background: #1e293b; }
+.analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }

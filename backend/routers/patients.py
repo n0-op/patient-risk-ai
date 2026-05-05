@@ -1,9 +1,10 @@
 """HTTP routing for all /patients endpoints — delegates business logic to services."""
+import uuid
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, Request
 
-from backend.models.schemas import AnalysisResult
+from backend.models.schemas import AnalysisResult, CustomPatientRequest
 from backend.services import audit_service, cache_service
 from risk_engine import analyze_patient
 
@@ -50,6 +51,40 @@ def analyze(patient_id: str, request: Request):
         _session_token(request),
         patient_ref=audit_service.hash_patient_id(patient_id),
         source="live",
+    )
+    return AnalysisResult(patient_id=patient_id, **entry)
+
+
+@router.post("/analyze/custom", response_model=AnalysisResult)
+def analyze_custom(body: CustomPatientRequest, request: Request):
+    patient_id = str(uuid.uuid4())
+    labs = body.lab_values
+    patient = {
+        "id": patient_id,
+        "name": body.name,
+        "age": body.age,
+        "gender": body.gender,
+        "diagnoses": body.diagnoses,
+        "medications": [{"name": m.name, "dose": m.dose} for m in body.medications],
+        "lab_values": {
+            "A1C_percent": labs.a1c,
+            "creatinine_mg_dL": labs.creatinine,
+            "blood_pressure_mmHg": labs.blood_pressure,
+            "eGFR_mL_min_1_73m2": labs.egfr,
+        },
+        "risk_flags": body.risk_flags,
+        "recent_visit": {},
+    }
+    summary = analyze_patient(patient)
+    entry = {
+        "summary": summary,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source": "custom",
+    }
+    audit_service.audit(
+        "custom_patient_analyzed",
+        _session_token(request),
+        patient_ref=audit_service.hash_patient_id(patient_id),
     )
     return AnalysisResult(patient_id=patient_id, **entry)
 

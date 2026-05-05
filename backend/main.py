@@ -25,6 +25,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost",
+        "http://localhost:5500",
         "http://127.0.0.1:8000",
         "http://127.0.0.1",
         "https://patient-risk-ai.vercel.app",
