@@ -42,7 +42,7 @@ The workflow:
 |---|---|
 | LLM | Anthropic Claude (`claude-sonnet-4-6`) via Anthropic Python SDK |
 | Backend | FastAPI + Uvicorn |
-| Frontend | Vanilla HTML/CSS/JS (no build step) |
+| Frontend | Legacy: vanilla HTML/CSS/JS; React (Vite + TypeScript) in `frontend-react/` |
 | Data | JSON flat file — structured to mirror real EHR output |
 | Validation | Pydantic v2 |
 
@@ -94,18 +94,33 @@ uv run uvicorn backend.main:app --reload
 
 Do not open `frontend/index.html` directly in your browser — this causes CORS errors because the origin resolves to `null`.
 
-Instead, serve it through a local HTTP server:
+**Legacy frontend** (static HTML/JS):
 
 ```bash
 cd frontend
 python -m http.server 5500
 ```
 
-Then open `http://localhost:5500` in your browser.
+**React frontend** (Vite + TypeScript, side-by-side migration):
 
-The frontend automatically detects whether it is running locally or on Vercel and points to the correct backend:
+```bash
+cd frontend-react
+npm install
+npm run dev
+```
+
+Both default to `http://localhost:5500` — run one at a time.
+
+The React app uses env-based API URLs (see `frontend-react/.env.development`):
 - **Local:** `http://127.0.0.1:8000`
 - **Production:** `https://web-production-9a2f8.up.railway.app`
+
+**Frontend tests (React):**
+
+```bash
+cd frontend-react
+npm test
+```
 
 **Verify setup (optional)**
 

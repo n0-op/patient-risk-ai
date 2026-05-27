@@ -1,4 +1,6 @@
 .env
+node_modules/
+frontend-react/dist/
 venv/
 __pycache__/
 *.pyc
