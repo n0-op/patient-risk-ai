@@ -54,3 +54,58 @@ def test_response_schema_includes_source_field(client, sample_patient, mock_anal
     data = response.json()
     assert "source" in data
     assert data["source"] in ("pregenerated", "cache", "live")
+
+
+VALID_CUSTOM_BODY = {
+    "name": "Jane Doe",
+    "age": 45,
+    "gender": "Female",
+    "diagnoses": ["Hypertension"],
+    "medications": [{"name": "Lisinopril", "dose": "10mg daily"}],
+    "lab_values": {"blood_pressure": "140/90"},
+    "risk_flags": ["Uncontrolled BP"],
+}
+
+
+def test_custom_analyze_returns_200(client, mock_analyze):
+    response = client.post("/analyze/custom", json=VALID_CUSTOM_BODY)
+    assert response.status_code == 200
+
+
+def test_custom_analyze_source_is_custom(client, mock_analyze):
+    response = client.post("/analyze/custom", json=VALID_CUSTOM_BODY)
+    assert response.json()["source"] == "custom"
+
+
+def test_custom_analyze_returns_uuid_patient_id(client, mock_analyze):
+    import uuid
+    response = client.post("/analyze/custom", json=VALID_CUSTOM_BODY)
+    data = response.json()
+    assert "patient_id" in data
+    # must be a valid UUID
+    uuid.UUID(data["patient_id"])
+
+
+def test_custom_analyze_missing_name_returns_422(client, mock_analyze):
+    body = {k: v for k, v in VALID_CUSTOM_BODY.items() if k != "name"}
+    response = client.post("/analyze/custom", json=body)
+    assert response.status_code == 422
+
+
+def test_custom_analyze_missing_age_returns_422(client, mock_analyze):
+    body = {k: v for k, v in VALID_CUSTOM_BODY.items() if k != "age"}
+    response = client.post("/analyze/custom", json=body)
+    assert response.status_code == 422
+
+
+def test_custom_analyze_does_not_store_in_cache(client, mock_analyze):
+    import backend.services.cache_service as cs
+    cache_before = dict(cs._summary_cache)
+    client.post("/analyze/custom", json=VALID_CUSTOM_BODY)
+    assert cs._summary_cache == cache_before
+
+
+def test_custom_analyze_always_calls_analyze_patient(client, mock_analyze):
+    client.post("/analyze/custom", json=VALID_CUSTOM_BODY)
+    client.post("/analyze/custom", json=VALID_CUSTOM_BODY)
+    assert mock_analyze.call_count == 2
