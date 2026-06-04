@@ -26,7 +26,7 @@ The workflow:
 1. Care coordinator opens the app and sees a panel of patients
 2. Clicking a patient triggers a live analysis via the Claude API
 3. A risk summary appears in seconds — with priority badge and key concerns called out
-4. Summaries for the 12 sample patients are pre-generated and stored server-side — first click loads instantly with zero API calls. A Refresh button forces a fresh analysis and updates the server-side cache
+4. Summaries for the 12 sample patients are pre-generated and committed to the repo — the first click loads instantly with no API call. Clicking **Refresh** forces a live re-analysis and updates the server-side cache for that patient
 
 ---
 
@@ -113,6 +113,16 @@ The frontend automatically detects whether it is running locally or on Vercel an
 uv run python test_setup.py    # confirms API key and data load
 uv run python risk_engine.py   # runs analysis on all 12 sample patients
 ```
+
+**Refreshing baseline summaries (optional)**
+
+The pre-generated summaries are committed to the repo in `data/summary_cache.json`. Re-run this if you change the patient data or the prompt:
+
+```bash
+uv run python generate_cache.py
+```
+
+This makes one API call per patient (12 total) and overwrites `data/summary_cache.json`.
 
 **Run tests**
 

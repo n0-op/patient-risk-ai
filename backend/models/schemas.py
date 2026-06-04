@@ -1,5 +1,5 @@
 """Pydantic request and response models for the patient risk API."""
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class AnalysisResult(BaseModel):
@@ -24,7 +24,7 @@ class LabValuesInput(BaseModel):
 
 class CustomPatientRequest(BaseModel):
     name: str
-    age: int
+    age: int = Field(ge=0, le=130)
     gender: str
     diagnoses: list[str] = []
     medications: list[MedicationInput] = []
