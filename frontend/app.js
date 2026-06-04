@@ -3,7 +3,7 @@ const isLocal = window.location.hostname === 'localhost'
 
 const API_BASE = isLocal
   ? 'http://127.0.0.1:8000'
-  : 'https://web-production-9a2f8.up.railway.app';
+  : 'https://patient-risk-api.duckdns.org';
 const cache = {};           // keyed by patient id
 let activeId = null;
 let activePatient = null;   // { id, name, age, gender, dx }
