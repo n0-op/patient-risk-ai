@@ -30,7 +30,7 @@ app.add_middleware(
         "http://127.0.0.1",
         "https://patient-risk-ai.vercel.app",
         "https://*.vercel.app",
-        "https://web-production-9a2f8.up.railway.app",
+        "https://patient-risk-api.duckdns.org",
     ],
     allow_methods=["*"],
     allow_headers=["*"],
